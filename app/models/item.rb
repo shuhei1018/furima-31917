@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to :delivery_area
   belongs_to :delivery_date
 
+  has_one_attached :image
+
   validates :name, :explanation, :price, presence: true
 
   validates :category_id, numericality: { other_than: 1 } 
