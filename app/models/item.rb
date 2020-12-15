@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   validates :name, :explanation, :image, presence: true
 
-  with_options presence: true, numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
     validates :delivery_burden_id
