@@ -62,8 +62,8 @@ RSpec.describe Purchase, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phonenumber Input only number")
       end
-      it '電話番号が11桁でない場合は購入ができないこと' do
-        @purchase_address.phonenumber = '0900000000'
+      it '電話番号が12桁以上であれば購入ができないこと' do
+        @purchase_address.phonenumber = '090000000000'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phonenumber Input only number")
       end
