@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
       @purchase_address.save
       redirect_to root_path
     else
-      redirect_to item_purchases_path
+      render :index
     end
   end
 
