@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_address_params
-    params.require(:purchase_address).permit(:postalcode, :prefecture_id, :municipality, :house_number, :building_name, :phonenumber).merge(user_id: current_user.id, item_id:params[:item_id], token: params[:token])
+    params.require(:purchase_address).permit(:postalcode, :prefecture_id, :municipality, :house_number, :building_name, :phonenumber).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def move_to_root
@@ -33,12 +33,11 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: purchase_address_params[:token],
-        currency: 'jpy' 
-      )
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_address_params[:token],
+      currency: 'jpy'
+    )
   end
-
 end
