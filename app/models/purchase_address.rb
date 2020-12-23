@@ -3,6 +3,7 @@ class PurchaseAddress
   attr_accessor :postalcode, :prefecture_id, :municipality, :house_number, :building_name, :phonenumber, :user_id, :item_id, :token
 
   with_options presence: true do
+    validates :token
     validates :postalcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :municipality
