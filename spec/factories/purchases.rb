@@ -7,5 +7,7 @@ FactoryBot.define do
     building_name { Faker::Address.street_name }
     phonenumber { Faker::Number.number(digits: 11) }
     token { 'tok_7a9cf1b9c6900fe4a4a64060135e' }
+    user_id {1}
+    item_id {1}
   end
 end
